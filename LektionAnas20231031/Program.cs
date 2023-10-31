@@ -1,7 +1,11 @@
-﻿namespace LektionAnas20231031
+﻿using System.Reflection.Metadata.Ecma335;
+
+namespace LektionAnas20231031
 {
     internal class Program
     {
+        public List<Patient> patientList = new List<Patient>();
+
         static void Main(string[] args)
         {
 
@@ -9,7 +13,10 @@
             Console.WriteLine("Employee List: ");
             Doctors();
             Nurses();
+
+            Console.WriteLine("Patient List");
             Patients();
+            
 
 
 
@@ -80,12 +87,54 @@
         public static void Patients()
         {
             Patient patient1 = new Patient();
-            patient1.Title = "Patient";
-            patient1.TimeOfReg = 13.30;
-            patient1.TimeOfRelease = 17.30;
+            patient1.Title = "Patient 1";
+            patient1.TimeOfReg = 13.33;
+            patient1.TimeOfRelease = 14.25;
             patient1.Disease = "COVID-19";
-            int DiseasePat1 = Patient.Prescriptions(2);
+            //patient1.missbruk = 0;
+            
+
+            Patient patient2 = new Patient();
+            patient2.Title = "Patient 2";
+            patient2.TimeOfReg = 14.32;
+            patient2.TimeOfRelease = 15.31;
+            patient2.Disease = " ";
+            patient2.missbruk = 5;
+
+            Patient patient3 = new Patient();
+            patient3.Title = "Patient 3";
+            patient3.TimeOfReg = 15.35;
+            patient3.TimeOfRelease = 18.31;
+            patient3.Disease = "Leukimia";
+            patient3.missbruk = 6;
+            
+
+            Patient patient4 = new Patient();
+            patient4.Title = "Patient 4";
+            patient4.TimeOfReg = 18.35;
+            patient4.TimeOfRelease = 18.55;
+            patient4.Disease = "Cold";
+            patient4.missbruk = 0;
+            
+
+            List<Patient> patientList = new List<Patient>();
+            patientList.Add(patient1);
+            patientList.Add(patient2);
+            patientList.Add(patient3);
+            patientList.Add(patient4);
+
+
+            foreach (Patient item in patientList)
+            {
+                Console.WriteLine($"Title: {item.Title}\nTime of registration: {item.TimeOfReg}\nTime of release: {item.TimeOfRelease}\nDisease: {item.Disease}");
+                Patient.Prescriptions(item.missbruk);
+                Console.WriteLine();
+            }
+
+
 
         }
+
+       
     }
 }
